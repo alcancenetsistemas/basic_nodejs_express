@@ -1,0 +1,23 @@
+name: Backup Repository
+
+on:
+  workflow_dispatch: # Permite disparar manualmente
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Create backup
+        run: |
+          mkdir -p backup
+          zip -r backup/repository-backup.zip . # Compacta o repositório em um arquivo ZIP
+
+      - name: Upload backup to artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: repository-backup
+          path: backup/repository-backup.zip
