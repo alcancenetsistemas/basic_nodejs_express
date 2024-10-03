@@ -17,7 +17,7 @@ jobs:
           zip -r backup/repository-backup.zip . # Compacta o repositório em um arquivo ZIP
 
       - name: Upload backup to artifacts
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: repository-backup
           path: backup/repository-backup.zip
